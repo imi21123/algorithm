@@ -7,7 +7,7 @@ int main() {
 
     int n, m, cnt = 0;
     int arr[10001];
-    long sum[10003];
+    int sum[10003];
 
     cin >> n >> m;
     for (int i = 0; i < n; i++) {
@@ -19,11 +19,20 @@ int main() {
         sum[i] = sum[i - 1] + arr[i - 1];
     }
 
-    for (int i = 1; i <= n; i++) {
-        for (int j = 0; j < i; j++) {
-            if (sum[i] - sum[j] == m) {
-                cnt++;
-            }
+    int l = 0, r = 1;
+    while (r <= n) {
+        if (r == n && sum[r] - sum[l] < m) {
+            break;
+        }
+        
+        if (sum[r] - sum[l] < m) {
+            r++;
+        } else if (sum[r] - sum[l] > m) {
+            l++;
+        } else {
+            cnt++;
+            l++;
+            r++;
         }
     }
     
