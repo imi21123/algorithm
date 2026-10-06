@@ -1,5 +1,6 @@
 function solution(n) {
     var answer = 0;
+    
     if (n % 2) {
         for (let i = 1; i <= n; i+=2) {
             answer += i;
@@ -9,5 +10,6 @@ function solution(n) {
             answer += i * i;
         }
     }
+    
     return answer;
 }
